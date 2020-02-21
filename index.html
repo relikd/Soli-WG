@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="de">
+<head>
+	<meta charset="utf-8">
+	<title>WG Kosten</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script src="script.js"></script>
+</head>
+<body>
+<!-- Templates -->
+<div id="input-template" style="display:none">
+<div class="inpt">
+	<input type="number" min="1" step="0.01" placeholder="0" onblur="leaveInput(this)" onkeyup="nextInput(event)">
+	<span>t</span>
+</div>
+</div>
+<div id="room-template" style="display:none">
+<div class="room">
+	<span>Zimmer</span> <num class="qm" sign="qm"></num>
+	<button type="button" onclick="delRoom(this)">❌</button>
+	<div class="residents">
+		<button type="button" onclick="delPerson(this)">-1</button>
+		<span>n</span> <i>1</i>
+		<button type="button" onclick="addPerson(this)">+1</button>
+	</div>
+</div>
+</div>
+
+<!-- Main -->
+<h1>WG Kosten <a id="shortlink"></a></h1>
+<p>Nachzahlung? Mietkosten ausfüllen, Zusatzkosten frei lassen.</p>
+<section id="flat">
+	<div>
+		<label>Mietkosten</label>
+		<num id="rent" sign="€"></num>
+		<p>Kosten die nach Fläche aufgeteilt werden (z.B. Kaltmiete, Heizung)</p>
+	</div><div>
+		<label>Zusatzkosten</label>
+		<num id="shared" sign="€" optional></num>
+		<p>Kosten die nach Person aufgeteilt werden (z.B. Internet, Strom, Telefon)</p>
+	</div><div>
+		<label>Gesamtfläche</label>
+		<num id="qm" sign="qm"></num>
+		<p>Summe aller Räume in Quadratmetern</p>
+	</div>
+</section>
+
+<h2>Zimmer</h2>
+<section id="rooms">
+	<button id="add-room" type="button" onclick="addRoom(this)">＋</button>
+</section>
+
+<ul onclick="toggleOptions(this)"><li>Erweiterte Optionen</li></ul>
+<section id="options">
+	<div>
+		<p>Solidaritätsfaktor: <b id="soli-val"></b></p>
+		<input id="soli" type="range" min="0" max="100" value="0" step="5" oninput="soliChanged()" onchange="soliChanged()">
+	</div>
+</section>
+
+<div id="error" hidden></div>
+</body>
+</html>
