@@ -1,0 +1,71 @@
+#error{
+	position:fixed; top:0; left:0; width:100%;
+	background:#A00; color:white;
+	text-align:center;
+	font-size:1.2em;
+	padding:12px;
+}
+body{
+	max-width: 1200px;
+	font-family:sans-serif;
+	padding:20px;
+	background:#FFF;
+	color:#444;
+}
+#shortlink{
+	color: unset;
+	font-size: 0.4em
+}
+/* Grid Layout */
+section{display:flex; flex-flow:row wrap}
+section>*{
+	min-height:80px;
+	min-width:80px;
+	max-width:300px;
+	margin:3px;
+	padding:1em;
+	background:#BCD;
+}
+#add-room{font-size:3em; line-height:0}
+/* Residents */
+.residents>i{color:#555}
+.residents>i::before{content:"("}
+.residents>i::after{content:"x)"}
+.residents>button{margin:2em 1em 0}
+.residents>span::after{content:" €"}
+.room{position:relative}
+.room>button{position:absolute; top:0; right:0; scale:.75}
+/* Customize Input Field */
+.inpt{display:inline-table}
+.inpt>input{width:5em}
+.inpt>*{
+	display:table-cell;
+	padding:4px 6px;
+	border:1px solid #CCC;
+}
+.inpt>span{
+	color:#555;
+	background:#EEE;
+	vertical-align:middle;
+	border-left:0;
+	font-size:80%;
+}
+#soli-val{display:inline-block; width:2.5em}
+#soli-val:after{content:"%"}
+#soli{width:100%; padding:0; margin:1em 0 0}
+/* Customize Button */
+input:invalid{background:#FE8}
+button:hover{background:#CCC}
+button{
+	padding:4px 6px;
+	border:1px solid #CCC;
+	background:#EEE;
+}
+/* Dark Mode */
+@media(prefers-color-scheme:dark){
+	body{background:#000; color:#FFF}
+	section>*{background:#123}
+	button{border:1px solid #444; background:#222; color:#FFF}
+	button:hover{background:#444}
+	.residents>i{color:#BBB}
+}
